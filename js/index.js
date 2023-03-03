@@ -23,29 +23,34 @@ const displayTools = tools =>{
       const seeMore = document.getElementById('see-more');
       seeMore.classList.remove('d-none')
     }
+    else {
+      seeMore.classList.add('d-none')
+    }
 
 
     tools.forEach(tools => {
+      const{ id,image,features,name, published_in } =tools;
         const toolDiv = document.createElement('div')
         toolDiv.classList.add('col')
         toolDiv.innerHTML = `
         <div class="card">
-        <img src="${tools.image}" class="card-img-top" alt="...">
+        <img src="${image}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Features</h5>
 
-          <p class="card-text">1.${tools.features[0]}</p>
-          <p class="card-text">2.${tools.features[1]}</p>
-          <p class="card-text">3.${tools.features[2]}</p>
+          <p class="card-text">1.${features[0]}</p>
+          <p class="card-text">2.${features[1]}</p>
+          <p class="card-text">3.${features[2]}</p>
         </div>
         <hr>
-        <h5 class="card-title">${tools.name}</h5>
+        <h5 class="card-title">${name}</h5>
         <div>
         <div class="d-flex justify-content-between px-2 pb-2">
         <i class="fa-regular fa-calendar"></i>
-        <small class="text-muted">${tools.published_in}</small>
+        <small class="text-muted">${published_in}</small>
         <div class="rounded-circle bg-danger-subtle px-2 py-1">
-        <i class="fa-solid fa-arrow-right text-danger">
+        <i class="fa-solid fa-arrow-right text-danger" onclick="loadToolDetails('${id}')" data-bs-toggle="modal"
+        data-bs-target="#exampleModal"> 
         </i>
         </div>
         
@@ -63,11 +68,11 @@ const displayTools = tools =>{
         toolsContainer.appendChild(toolDiv)
     });
     // console.log(tools);
-    toggleSpinner(false);
+    // toggleSpinner(false);
 }
 
 document.getElementById('btn-sortby').addEventListener('click',function(){
-    console.log('dfd');
+    // console.log('dfd');
 })
 
 
@@ -75,20 +80,45 @@ document.getElementById('btn-sortby').addEventListener('click',function(){
     const btnSeeMore = document.getElementById('see-more').addEventListener('click',function(){
       const showTools= btnSeeMore.tools.slice(0,6)
       // const showTools = tools.slice(0,6)
-      console.log(showTools);
+      // console.log(showTools);
 })
   }
-  document.getElementById('btn-seemore').addEventListener('click',function(){
+  // document.getElementById('btn-see-smore').addEventListener('click',function(){
+  //   // const showMore = document.getElementById('btn-see-more')
+  //   const seeMore =data.data.tools;
+  //   fetchTools(seeMore)
     // toggleSpinner(true);
     
-        console.log('dfs');
-  })
+  //       // console.log('dfs');
+  // })
 // const toggleSpinner = isLoading => {
 //   const loaderSection = document.getElementById('loader')
 //   if(isLoading){
 //     loaderSection.classList.remove('d-none')
 //   }
 // }
+
+
+const loadToolDetails = async id =>{
+  const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+  // console.log(url);
+  const res = await fetch(url);
+  const data = await res.json();
+  displayToolDetails(data.data)
+}
+
+const displayToolDetails = tools =>{
+  console.log(tools)
+  const modalDescription = document.getElementById('modal-description')
+  modalDescription.innerText =tools.description;
+  const modalPricing = document.getElementById('modal-pricing')
+  modalPricing.innerText = tools.pricing[0].price
+  const modalPricing1 = document.getElementById('modal-pricing1')
+  modalPricing1.innerText = tools.pricing[1].price
+  const modalPricing2 = document.getElementById('modal-pricing2')
+  modalPricing2.innerText = tools.pricing[2].price
+  // modalPricing.innerText = tools.pricing[2].price
+}
 
 
 fetchTools()
@@ -148,21 +178,6 @@ fetchTools()
 
 
 
-// const displayPhones = (phones,dataLimit) =>{
-//     const phoneContainer = document.getElementById('phone-container')
-//     phoneContainer.textContent = '';
-
-//     // display 10 phones only
-// //     const showAll= document.getElementById('Show-all')
-// //     if ( dataLimit && phones.length > 10){
-// //         phones = phones.slice(0,10);              
-       
-// //         showAll.classList.remove('d-none');
-// //     }
-// //     else{
-// //         showAll.classList.add('d-none');
-// //     }
-// // }
 
 
 
@@ -171,11 +186,5 @@ fetchTools()
 
 
 
-// const loadPhones = async(searchText,dataLimit) => {
-//     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
-//     const res = await fetch(url);
-//     const data = await res.json()
-//     displayPhones (data.data ,dataLimit);
-// } 
 
 
