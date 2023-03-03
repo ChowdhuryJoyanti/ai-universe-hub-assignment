@@ -15,6 +15,16 @@ const fetchTools =async () => {
 
 const displayTools = tools =>{
     const toolsContainer = document.getElementById('tools-container');
+    toolsContainer.textContent = '';
+    // tools.slice(0,6);
+
+    if(tools.length > 10){
+      tools = tools.slice(0,6);
+      const seeMore = document.getElementById('see-more');
+      seeMore.classList.remove('d-none')
+    }
+
+
     tools.forEach(tools => {
         const toolDiv = document.createElement('div')
         toolDiv.classList.add('col')
@@ -52,8 +62,34 @@ const displayTools = tools =>{
 
         toolsContainer.appendChild(toolDiv)
     });
-    console.log(tools);
+    // console.log(tools);
+    toggleSpinner(false);
 }
+
+document.getElementById('btn-sortby').addEventListener('click',function(){
+    console.log('dfd');
+})
+
+
+  const displayMoreTools = tools =>{
+    const btnSeeMore = document.getElementById('see-more').addEventListener('click',function(){
+      const showTools= btnSeeMore.tools.slice(0,6)
+      // const showTools = tools.slice(0,6)
+      console.log(showTools);
+})
+  }
+  document.getElementById('btn-seemore').addEventListener('click',function(){
+    // toggleSpinner(true);
+    
+        console.log('dfs');
+  })
+// const toggleSpinner = isLoading => {
+//   const loaderSection = document.getElementById('loader')
+//   if(isLoading){
+//     loaderSection.classList.remove('d-none')
+//   }
+// }
+
 
 fetchTools()
 
@@ -143,8 +179,3 @@ fetchTools()
 // } 
 
 
-// const fetchCatagories = () => {
-//     fetch('https://openapi.programming-hero.com/api/news/categories')
-//     .then(res =>res.json())
-//     .then(data =>showCatagories(data.data))
-// }
