@@ -80,27 +80,36 @@ document.getElementById('btn-sortby').addEventListener('click',function(){
 })
 
 
-  const displayMoreTools = tools =>{
-    const btnSeeMore = document.getElementById('see-more').addEventListener('click',function(){
-      const showTools= btnSeeMore.tools.slice(0,6)
-      // const showTools = tools.slice(0,6)
-      // console.log(showTools);
-})
-  }
-  // document.getElementById('btn-see-smore').addEventListener('click',function(){
-  //   // const showMore = document.getElementById('btn-see-more')
-  //   const seeMore =data.data.tools;
-  //   fetchTools(seeMore)
-    // toggleSpinner(true);
-    
-  //       // console.log('dfs');
-  // })
-// const toggleSpinner = isLoading => {
-//   const loaderSection = document.getElementById('loader')
-//   if(isLoading){
-//     loaderSection.classList.remove('d-none')
+//   const displayMoreTools = tools =>{
+//     const btnSeeMore = document.getElementById('btn-see-more').addEventListener('click',function(){
+//       // toggleSpinner(true);
+//       const showTools= btnSeeMore.tools.slice(0,6)
+//       // const showTools = tools.slice(0,6)
+//       // console.log(showTools);
+// })
 //   }
-// }
+  document.getElementById('btn-see-more').addEventListener('click',function(){
+    // const showMore = document.getElementById('btn-see-more')
+    toggleSpinner(true);
+    const seeMore =data.data.tools;
+    fetchTools(seeMore)
+    // toggleSpinner(false);
+   
+    
+        // console.log('dfs');
+  })
+
+
+const toggleSpinner = isLoading => {
+  const loaderSection = document.getElementById('loader')
+  if(isLoading){
+    loaderSection.classList.remove('d-none')
+  }
+  else{
+    loaderSection.classList.add('d-none')
+  }
+
+}
 
 
 const loadToolDetails = async id =>{
@@ -157,7 +166,10 @@ const displayToolDetails = tools =>{
 }
 
 
+document.getElementById('btn-see-more').addEventListener('click',function(){
+       
 
+})
 
 
   // tools.forEach(tool => {
