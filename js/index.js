@@ -10,7 +10,7 @@ const fetchTools =async () => {
 const displayTools = tools =>{
     const toolsContainer = document.getElementById('tools-container');
     toolsContainer.textContent = '';
-    // tools.slice(0,6);
+    tools.slice(0,6);
 
     if(tools.length > 10){
       tools = tools.slice(0,6);
@@ -164,6 +164,7 @@ document.getElementById('btn-see-more').addEventListener('click',function(){
   const toolsContainer = document.getElementById('tools-container');
     toolsContainer.textContent = '';
     tools = tools.data
+    toggleSpinner(false)
 
   // const displayTools = tools =>{
   //   const toolsContainer = document.getElementById('tools-container');
