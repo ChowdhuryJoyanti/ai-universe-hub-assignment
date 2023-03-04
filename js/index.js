@@ -69,6 +69,10 @@ const displayTools = tools =>{
     });
     // console.log(tools);
     // toggleSpinner(false);
+
+
+
+  
 }
 
 document.getElementById('btn-sortby').addEventListener('click',function(){
@@ -137,46 +141,43 @@ const displayToolDetails = tools =>{
 
 
 
-  tools.forEach(tool => {
-    const toolDiv = document.createElement('div')
-    toolDiv.classList.add('col')
-     toolDiv.innerHTML=`
-     <div class="d-flex px-auto m-2">
-            <div class="modal-body bg-light rounded text-success fw-bold m-2 " style="height:60px; width:65px;" id="modal-pricing">
-                  <p>${tools.pricing[0].price
-                  }</p>
+
+  const modalImage =document.getElementById('modal-image')
+        modalImage.innerHTML = `
+        <img src="${tools.image_link[0]}" class="card-img-top" alt="...">
+          <p>${tools.input_output_examples[0].input
+          }</p>
+          <p>${tools.input_output_examples[0].output
+          }</p>
+        
+        
+        `;
+    // modalImage.appendChild(modalContainer)
+
+}
+
+
+
+
+
+  // tools.forEach(tool => {
+  //   const toolDiv = document.createElement('div')
+  //   toolDiv.classList.add('col')
+  //    toolDiv.innerHTML=`
+  //    <div class="d-flex px-auto m-2">
+  //           <div class="modal-body bg-light rounded text-success fw-bold m-2 " style="height:60px; width:65px;" id="modal-pricing">
+  //                 <p>${tools.pricing[0].price
+  //                 }</p>
                
-              </div>
+  //             </div>
 
 
      
      
-     </div>
-     `;
-     modalContainer.appendChild(toolDiv)
-  })
-
-
-
-
-  phones.forEach(phone => {
-    const phoneDiv = document.createElement('div');
-    phoneDiv.classList.add('col')
-    phoneDiv.innerHTML =`
-    <div class="card">
-                    <img src="${phone.image}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">${phone. phone_name}</h5>
-                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <button onclick="loadPhoneDetails('${phone.slug}')" href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#phoneDetailModall">Show Details</button>
-                  
-                    </div>
-                  </div>
-    
-    `;
-    phoneContainer.appendChild(phoneDiv);
-
-});
+  //    </div>
+  //    `;
+  //    modalContainer.appendChild(toolDiv)
+  // })
 
 
 
@@ -186,18 +187,10 @@ const displayToolDetails = tools =>{
 
 
 
-  // const modalImage = document.getElementById('modal-image')
 
 
-  // const modalContainer =  document.getElementById('modal-container');
-  // modalContainer.innnerhesla= 
-  // data.forEach(tools) => {
-  //   modalContainer.innerHTML= `
-  //   <h5 class="card-title">Features</h5>
-  //   <p class="card-text">1.${tools.features[0].feature_name}</p>
-    
-  //   `
-  // }
+
+
    
       
  
@@ -236,17 +229,7 @@ const displayToolDetails = tools =>{
 
 
 
-  // const modalImage =document.getElementById('modal-image')
-  // modalImage
-  // const toolDetails = document.createElement('div')
-  //       // toolDiv.classList.add('col')
-  //       toolDetails.innerHTML = `
-  //       <img src="${tools.image_link[0]}" class="card-img-top" alt="...">
-
-        
-        
-  //       `;
-    // modalImage.appendChild(modalContainer)
+ 
         
         
         
@@ -257,7 +240,7 @@ const displayToolDetails = tools =>{
   
   
 
-}
+
 
 
 
