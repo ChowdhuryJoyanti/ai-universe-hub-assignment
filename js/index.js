@@ -117,22 +117,111 @@ const displayToolDetails = tools =>{
   modalPricing1.innerText = tools.pricing[1].price
   const modalPricing2 = document.getElementById('modal-pricing2')
   modalPricing2.innerText = tools.pricing[2].price
-  const modalImage = document.getElementById('modal-image')
+  // const featureHeader = document.getElementById('Feature-header')
+  // featureHeader=tools.feature
+  const modalFeature = document.getElementById('modal-features')
+  modalFeature.innerText =tools.features[1].feature_name
+  const modalFeature1 = document.getElementById('modal-feature1')
+  modalFeature1.innerText =tools.features[2].feature_name
+  const modalFeature2 = document.getElementById('modal-feature2')
+  modalFeature2.innerText =tools.features[3].feature_name
+
+  const modalintegrations = document.getElementById('modal-integrations')
+  modalintegrations.innerText =tools.integrations[0]
+  const modalintegration1 =document.getElementById('modal-integration1')
+  modalintegration1.innerText = tools.integrations[1]
+  const modalintegration2 = document.getElementById('modal-integration2')
+  modalintegration2.innerText = tools.integrations[2]
 
 
-  const modalContainer =  document.getElementById('modal-container')
-  modalImage.innerHTML=`
+
+
+
+  tools.forEach(tool => {
+    const toolDiv = document.createElement('div')
+    toolDiv.classList.add('col')
+     toolDiv.innerHTML=`
+     <div class="d-flex px-auto m-2">
+            <div class="modal-body bg-light rounded text-success fw-bold m-2 " style="height:60px; width:65px;" id="modal-pricing">
+                  <p>${tools.pricing[0].price
+                  }</p>
+               
+              </div>
+
+
+     
+     
+     </div>
+     `;
+     modalContainer.appendChild(toolDiv)
+  })
+
+
+
+
+  phones.forEach(phone => {
+    const phoneDiv = document.createElement('div');
+    phoneDiv.classList.add('col')
+    phoneDiv.innerHTML =`
+    <div class="card">
+                    <img src="${phone.image}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">${phone. phone_name}</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <button onclick="loadPhoneDetails('${phone.slug}')" href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#phoneDetailModall">Show Details</button>
+                  
+                    </div>
+                  </div>
+    
+    `;
+    phoneContainer.appendChild(phoneDiv);
+
+});
+
+
+
+
+
+
+
+
+
+  // const modalImage = document.getElementById('modal-image')
+
+
+  // const modalContainer =  document.getElementById('modal-container');
+  // modalContainer.innnerhesla= 
+  // data.forEach(tools) => {
+  //   modalContainer.innerHTML= `
+  //   <h5 class="card-title">Features</h5>
+  //   <p class="card-text">1.${tools.features[0].feature_name}</p>
+    
+  //   `
+  // }
+   
       
  
-  <h5 class="card-title">Features</h5>
+  
 
-  <p class="card-text">1.${tools.features[0].feature_name}</p>
+ 
 
 
-      <img src="${tools.image_link[0]}" class="card-img-top" alt="...">
+      // <img src="${tools.image_link[0]}" class="card-img-top" alt="...">
+
 
   
-  `
+
+
+  
+
+
+
+
+
+
+
+
+
 
   // const newsContainer = document.getElementById("all-news");
   // newsContainer.innerHTML = "";
@@ -157,7 +246,7 @@ const displayToolDetails = tools =>{
         
         
   //       `;
-    modalImage.appendChild(modalContainer)
+    // modalImage.appendChild(modalContainer)
         
         
         
