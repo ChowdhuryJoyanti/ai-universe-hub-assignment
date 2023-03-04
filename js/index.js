@@ -3,12 +3,6 @@ const fetchTools =async () => {
     const res =  await fetch(url);
     const data = await res.json()
     displayTools(data.data.tools);
-    // displayTools(data.data)
-
-
-    // fetch('https://openapi.programming-hero.com/api/ai/tools')
-    // .then(res =>res.json())
-    // .then(data => console.log(data))
 
 
 }
@@ -75,27 +69,25 @@ const displayTools = tools =>{
   
 }
 
-document.getElementById('btn-sortby').addEventListener('click',function(){
-    // console.log('dfd');
-})
-
-
-//   const displayMoreTools = tools =>{
-//     const btnSeeMore = document.getElementById('btn-see-more').addEventListener('click',function(){
-//       // toggleSpinner(true);
-//       const showTools= btnSeeMore.tools.slice(0,6)
-//       // const showTools = tools.slice(0,6)
-//       // console.log(showTools);
+// document.getElementById('btn-sortby').addEventListener('click',function(){
+//     // console.log('dfd');
 // })
-//   }
+
+        // spinner added--------------------------------------------------------
+        const processShow =(dataLimit) =>{
+          toggleSpinner(true)
+          const seeMore = document.getElementById('btn-see-more');
+          const seeMoreAll = seeMore.innerText;
+          fetchTools(seeMoreAll ,dataLimit);
+
+      
+      }
+
   document.getElementById('btn-see-more').addEventListener('click',function(){
-    // const showMore = document.getElementById('btn-see-more')
     toggleSpinner(true);
-    const seeMore =data.data.tools;
-    fetchTools(seeMore)
-    // toggleSpinner(false);
-   
-    
+    // const showAll = data.data.tools
+    processShow(10)
+
         // console.log('dfs');
   })
 
@@ -171,88 +163,7 @@ document.getElementById('btn-see-more').addEventListener('click',function(){
 
 })
 
-
-  // tools.forEach(tool => {
-  //   const toolDiv = document.createElement('div')
-  //   toolDiv.classList.add('col')
-  //    toolDiv.innerHTML=`
-  //    <div class="d-flex px-auto m-2">
-  //           <div class="modal-body bg-light rounded text-success fw-bold m-2 " style="height:60px; width:65px;" id="modal-pricing">
-  //                 <p>${tools.pricing[0].price
-  //                 }</p>
-               
-  //             </div>
-
-
      
-     
-  //    </div>
-  //    `;
-  //    modalContainer.appendChild(toolDiv)
-  // })
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-      
- 
-  
-
- 
-
-
-      // <img src="${tools.image_link[0]}" class="card-img-top" alt="...">
-
-
-  
-
-
-  
-
-
-
-
-
-
-
-
-
-
-  // const newsContainer = document.getElementById("all-news");
-  // newsContainer.innerHTML = "";
-  // data.forEach((singleNews) => {
-  //   const { _id, image_url, title, details, author, total_view,rating } = singleNews;
-  //   // newsContainer.innerHTML += ``
-  //   const card = document.createElement("div");
-  //   card.classList.add("card", "mb-3");
-  //   card.innerHTML = `<div class="row g-0">
-
-
-
-
-
- 
-        
-        
-        
-
-    // const displayTools = tools =>{
-    //   const toolsContainer = document.getElementById('tools-container');
-    //   toolsContainer.textContent = '';
-  
-  
-
-
 
 
 
@@ -261,51 +172,6 @@ fetchTools()
 
 
 
-// const displayUniverse = () => {
-//     const universeContainer = document.getElementById('universe-container')
-//     universeContainer.textContent ='';
-// }
-
-// universes.forEach(universe => {
-//     const universeDiv = document.createElement('div');
-//     universeDiv.classList.add('col')
-//     universeDiv.innerHTML =`
-//     <div class="card">
-        
-//             <img src="${tools.image}" class="card-img-top" alt="...">
-//             <div class="card-body">
-//             <h5 class="card-title">Card title</h5>
-//             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-//             </div>
-//             <div class="card-footer">
-//             <small class="text-muted">Last updated 3 mins ago</small>
-//             </div>
-//     </div>
-//     `
-
-// })
-
-// phones.forEach(phone => {
-//     const phoneDiv = document.createElement('div');
-//     phoneDiv.classList.add('col')
-//     phoneDiv.innerHTML =`
-//     <div class="card">
-//                     <img src="${phone.image}" class="card-img-top" alt="...">
-//                     <div class="card-body">
-//                       <h5 class="card-title">${phone. phone_name}</h5>
-//                       <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-//                       <button onclick="loadPhoneDetails('${phone.slug}')" href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#phoneDetailModall">Show Details</button>
-                  
-//                     </div>
-//                   </div>
-    
-//     `;
-//     phoneContainer.appendChild(phoneDiv);
-
-// });
-// // stop loader
-// toggleSpinner(false);
-// }
 
 
 
