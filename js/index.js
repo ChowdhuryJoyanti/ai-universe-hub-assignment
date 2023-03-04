@@ -101,7 +101,7 @@ document.getElementById('btn-sortby').addEventListener('click',function(){
 
 const loadToolDetails = async id =>{
   const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
-  // console.log(url);
+  console.log(url);
   const res = await fetch(url);
   const data = await res.json();
   displayToolDetails(data.data)
@@ -117,8 +117,59 @@ const displayToolDetails = tools =>{
   modalPricing1.innerText = tools.pricing[1].price
   const modalPricing2 = document.getElementById('modal-pricing2')
   modalPricing2.innerText = tools.pricing[2].price
-  // modalPricing.innerText = tools.pricing[2].price
+  const modalImage = document.getElementById('modal-image')
+
+
+  const modalContainer =  document.getElementById('modal-container')
+  modalImage.innerHTML=`
+      
+ 
+  <h5 class="card-title">Features</h5>
+
+  <p class="card-text">1.${tools.features[0].feature_name}</p>
+
+
+      <img src="${tools.image_link[0]}" class="card-img-top" alt="...">
+
+  
+  `
+
+  // const newsContainer = document.getElementById("all-news");
+  // newsContainer.innerHTML = "";
+  // data.forEach((singleNews) => {
+  //   const { _id, image_url, title, details, author, total_view,rating } = singleNews;
+  //   // newsContainer.innerHTML += ``
+  //   const card = document.createElement("div");
+  //   card.classList.add("card", "mb-3");
+  //   card.innerHTML = `<div class="row g-0">
+
+
+
+
+
+  // const modalImage =document.getElementById('modal-image')
+  // modalImage
+  // const toolDetails = document.createElement('div')
+  //       // toolDiv.classList.add('col')
+  //       toolDetails.innerHTML = `
+  //       <img src="${tools.image_link[0]}" class="card-img-top" alt="...">
+
+        
+        
+  //       `;
+    modalImage.appendChild(modalContainer)
+        
+        
+        
+
+    // const displayTools = tools =>{
+    //   const toolsContainer = document.getElementById('tools-container');
+    //   toolsContainer.textContent = '';
+  
+  
+
 }
+
 
 
 fetchTools()
