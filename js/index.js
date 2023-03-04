@@ -84,11 +84,13 @@ const displayTools = tools =>{
       }
 
   document.getElementById('btn-see-more').addEventListener('click',function(){
+
     toggleSpinner(true);
+
+   
     // const showAll = data.data.tools
     processShow(10)
 
-        // console.log('dfs');
   })
 
 
@@ -159,7 +161,23 @@ const displayToolDetails = tools =>{
 
 
 document.getElementById('btn-see-more').addEventListener('click',function(){
-       
+  const toolsContainer = document.getElementById('tools-container');
+    toolsContainer.textContent = '';
+    tools = tools.data
+
+  // const displayTools = tools =>{
+  //   const toolsContainer = document.getElementById('tools-container');
+  //   toolsContainer.textContent = '';
+  //   // tools.slice(0,6);
+
+  //   if(tools.length > 10){
+  //     tools = tools.slice(0,6);
+  //     const seeMore = document.getElementById('see-more');
+  //     seeMore.classList.remove('d-none')
+  //   }
+  //   else {
+  //     seeMore.classList.add('d-none')
+  //   }
 
 })
 
