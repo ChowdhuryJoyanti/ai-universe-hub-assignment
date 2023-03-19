@@ -1,8 +1,10 @@
+let allData = [];
 const fetchTools =async () => {
     const url =`https://openapi.programming-hero.com/api/ai/tools`
     const res =  await fetch(url);
     const data = await res.json()
-    displayTools(data.data.tools);
+    allData = data.data.tools;
+    displayTools(data.data.tools.slice(0,6));
 
 
 }
@@ -10,16 +12,16 @@ const fetchTools =async () => {
 const displayTools = tools =>{
     const toolsContainer = document.getElementById('tools-container');
     toolsContainer.textContent = '';
-    tools.slice(0,6);
+   
 
-    if(tools.length > 10){
-      tools = tools.slice(0,6);
-      const seeMore = document.getElementById('see-more');
-      seeMore.classList.remove('d-none')
-    }
-    else {
-      seeMore.classList.add('d-none')
-    }
+    // if(tools.length > 10){
+    //   tools = tools.slice(0,6);
+    //   const seeMore = document.getElementById('see-more');
+    //   seeMore.classList.remove('d-none')
+    // }
+    // else {
+    //   seeMore.classList.add('d-none')
+    // }
 
 
     tools.forEach(tools => {
@@ -87,10 +89,11 @@ const displayTools = tools =>{
 
     toggleSpinner(true);
 
-   
+    displayTools(allData);
     // const showAll = data.data.tools
-    processShow(10)
-
+    // processShow(10)
+    document.getElementById('btn-see-more').style.display = 'none';
+    toggleSpinner(false)
   })
 
 
@@ -160,11 +163,14 @@ const displayToolDetails = tools =>{
 }
 
 
-document.getElementById('btn-see-more').addEventListener('click',function(){
-  const toolsContainer = document.getElementById('tools-container');
-    toolsContainer.textContent = '';
-    tools = tools.data
-    toggleSpinner(false)
+// document.getElementById('btn-see-more').addEventListener('click',function(){
+//   const toolsContainer = document.getElementById('tools-container');
+//     toolsContainer.textContent = '';
+//     tools = tools.data
+//     toggleSpinner(false)
+
+
+
 
   // const displayTools = tools =>{
   //   const toolsContainer = document.getElementById('tools-container');
@@ -180,7 +186,7 @@ document.getElementById('btn-see-more').addEventListener('click',function(){
   //     seeMore.classList.add('d-none')
   //   }
 
-})
+// })
 
      
 
