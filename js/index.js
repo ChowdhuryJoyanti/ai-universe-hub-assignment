@@ -18,17 +18,7 @@ const fetchTools =async () => {
 const displayTools = tools =>{
     const toolsContainer = document.getElementById('tools-container');
     toolsContainer.textContent = '';
-   
-
-    // if(tools.length > 10){
-    //   tools = tools.slice(0,6);
-    //   const seeMore = document.getElementById('see-more');
-    //   seeMore.classList.remove('d-none')
-    // }
-    // else {
-    //   seeMore.classList.add('d-none')
-    // }
-
+  
 
     tools.forEach(tools => {
       const{ id,image,features,name, published_in } =tools;
@@ -167,35 +157,6 @@ const displayToolDetails = tools =>{
     // modalImage.appendChild(modalContainer)
 
 }
-
-
-
-// document.getElementById('btn-see-more').addEventListener('click',function(){
-//   const toolsContainer = document.getElementById('tools-container');
-//     toolsContainer.textContent = '';
-//     tools = tools.data
-//     toggleSpinner(false)
-
-
-
-
-  // const displayTools = tools =>{
-  //   const toolsContainer = document.getElementById('tools-container');
-  //   toolsContainer.textContent = '';
-  //   // tools.slice(0,6);
-
-  //   if(tools.length > 10){
-  //     tools = tools.slice(0,6);
-  //     const seeMore = document.getElementById('see-more');
-  //     seeMore.classList.remove('d-none')
-  //   }
-  //   else {
-  //     seeMore.classList.add('d-none')
-  //   }
-
-// })
-
-     
 
 
 
