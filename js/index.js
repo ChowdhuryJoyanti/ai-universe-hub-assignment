@@ -1,11 +1,17 @@
+const sortBtn = document.getElementById('btn-sortby') 
+
 let allData = [];
+
 const fetchTools =async () => {
     const url =`https://openapi.programming-hero.com/api/ai/tools`
     const res =  await fetch(url);
     const data = await res.json()
     allData = data.data.tools;
     displayTools(data.data.tools.slice(0,6));
-
+  sortBtn.addEventListener('click',() => {
+    const sortedTools = data.data.tools.sort((a, b) => new Date(b.published_in) - new Date(a.published_in));
+    displayTools(sortedTools.slice(0,6));
+  })
 
 }
 
@@ -122,7 +128,7 @@ const displayToolDetails = tools =>{
   const modalDescription = document.getElementById('modal-description')
   modalDescription.innerText =tools.description;
   const modalPricing = document.getElementById('modal-pricing')
-  modalPricing.innerText = tools.pricing[0].price
+  modalPricing.innerText = tools.pricing[0].price == "No cost" ? "Price not available": tools.pricing[0].price
   const modalPricing1 = document.getElementById('modal-pricing1')
   modalPricing1.innerText = tools.pricing[1].price
   const modalPricing2 = document.getElementById('modal-pricing2')
@@ -161,6 +167,7 @@ const displayToolDetails = tools =>{
     // modalImage.appendChild(modalContainer)
 
 }
+
 
 
 // document.getElementById('btn-see-more').addEventListener('click',function(){
